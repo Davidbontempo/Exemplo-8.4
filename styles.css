@@ -1,21 +1,20 @@
 * {
-    color:black;
+    color: #1a1a1a;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    background: linear-gradient(#b9b9b9, #ffffff);
-    min-height: 100vh; /* Garante que o fundo ocupe toda a altura da janela */
-    margin: 0; /* Remove margens padrões do navegador */
-    background-repeat: no-repeat;  /* Impede o gradiente de se repetir caso a página tenha rolagem */
-    background-attachment: fixed; /* Mantém o gradiente fixo no fundo enquanto o conteúdo rola */
+    background: linear-gradient(135deg, #cfd9df 0%, #e2ebf0 100%);
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 20px;
 }
 
 main {
@@ -23,56 +22,170 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    padding: 30px;
-    width: 100%;
-    max-width: 400px; 
-
-    background-color: rgb(254, 249, 243);
     text-align:center;
 
-    border-radius: 20px;
-    border: 1px solid rgb(128, 128, 128); 
-    border-color: rgb(128, 128, 128);
+    padding: 40px;
+    width: 100%;
+    max-width: 550px; 
+
+    /* Efeito Vidro (Glassmorphism) */
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    /* Linhas retas e minimalistas */
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.6); 
+
+    /* Sombra elegante e contemporânea */
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.08);
 }
 
-h2 { 
-    font-weight: bold;
-    font-size: 28px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+.divider {
+    width: 1px;
+    background: rgba(0, 0, 0, 0.1);
+    align-self: stretch;
+}
+
+p{
+    text-align: justify;
+    font-weight: 300;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    line-height: 1.5;
+}
+
+.destaque {
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+h1, h2 {
+    font-weight: 300;
+    letter-spacing: 2px;
     text-transform: uppercase;
     margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 25px;
+    font-weight: 400; 
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 20px;
+    margin-top: 5px;
 }
 
 form {
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap:15px;
+    gap:20px;
+}
+
+/* Divisória horizontal sutil entre os blocos */
+.divider {
+    height: 1px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    margin: 35px 0; /* Espaçamento simétrico acima e abaixo da linha */
 }
 
 label {
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 12px;
+    font-weight: 600;
     text-align: left;
-    margin-bottom: -5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #4a4a4a;
+    margin-bottom: -10px;
 }
 
 input {
-    padding: 8px;
-    border-radius: 10px;
-    border: 1px solid rgb(128, 128, 128); 
-    border-color: rgb(128, 128, 128);
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.15); 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: #004447;
+    box-shadow: 0 4px 12px rgba(0, 68, 71, 0.1);
 }
 
 button {
-    padding: 8px;
-    margin-top: 10px;
-    border-radius: 10px;
-    color: rgb(247, 247, 247);
-    background-color:rgb(0, 68, 71);
-    font-weight: bold;
-    font-size: 20px;
-    font-family: Arial, Helvetica, sans-serif
+    padding: 14px;
+    margin-top: 20px;
+    width: 100%;
+    border-radius: 2px;
+    border: none;
+    color: #ffffff;
+    background-color: #004447;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 68, 71, 0.2);
 }
+
+button:hover {
+    background-color: #002d30;
+    box-shadow: 0 6px 16px rgba(0, 68, 71, 0.3);
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+/* Notificação Flutuante de Sucesso */
+.notificacao-sucesso {
+    position: fixed;
+    bottom: -100px; /* Começa escondida abaixo da tela */
+    left: 51%;
+    transform: translateX(-50%);
+    background-color: #004447; /* Cor verde idêntica ao seu botão */
+    color: #ffffff;
+    padding: 16px 32px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    box-shadow: 0 10px 25px rgba(0, 68, 71, 0.3);
+    z-index: 1000;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito elástico ao subir */
+    opacity: 0;
+}
+
+/* Classe ativada via JavaScript para mostrar a caixinha */
+.notificacao-sucesso.mostrar {
+    bottom: 30px; /* Sobe para a posição visível */
+    opacity: 1;
+}
+
+/* Responsividade para celulares */
+@media (max-width: 480px) {
+    main {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 18px;
+        text-align: center;
+    }
+}
+      

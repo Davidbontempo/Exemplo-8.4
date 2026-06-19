@@ -20,31 +20,55 @@ body {
 main {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align:center;
-
-    padding: 40px;
+    align-items: stretch;
+    justify-content: flex-start;
     width: 100%;
     max-width: 550px; 
+    padding: 40px;
 
-    /* Efeito Vidro (Glassmorphism) */
     background: rgba(255, 255, 255, 0.45);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 
-    /* Linhas retas e minimalistas */
     border-radius: 4px;
     border: 1px solid rgba(255, 255, 255, 0.6); 
-
-    /* Sombra elegante e contemporânea */
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.08);
 }
 
-.divider {
-    width: 1px;
-    background: rgba(0, 0, 0, 0.1);
-    align-self: stretch;
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap:16px;
+}
+
+label {
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+input {
+    display: block;
+    padding: 12px;
+    width: 100%;
+    margin-bottom: 15px;
+
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.15); 
+
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.divider{
+    width:100%;
+    height:1px;
+    background:#d9d9d9;
 }
 
 p{
@@ -77,41 +101,6 @@ h1 {
 h2 {
     font-size: 20px;
     margin-top: 5px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap:20px;
-}
-
-/* Divisória horizontal sutil entre os blocos */
-.divider {
-    height: 1px;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.1);
-    margin: 35px 0; /* Espaçamento simétrico acima e abaixo da linha */
-}
-
-label {
-    font-size: 12px;
-    font-weight: 600;
-    text-align: left;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #4a4a4a;
-    margin-bottom: -10px;
-}
-
-input {
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.6);
-    border-radius: 2px;
-    border: 1px solid rgba(0, 0, 0, 0.15); 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    outline: none;
-    transition: all 0.3s ease;
 }
 
 input:focus {
@@ -155,9 +144,10 @@ button:active {
     transform: translateX(-50%);
     background-color: #004447; /* Cor verde idêntica ao seu botão */
     color: #ffffff;
-    padding: 16px 32px;
-    font-size: 14px;
-    font-weight: 600;
+    padding: 50px;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
     border-radius: 4px;

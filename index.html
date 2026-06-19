@@ -14,54 +14,56 @@
         <p class="page-description">
             <span class="destaque">Seja muito bem vindo ao nosso grupo!</span>
             <br><br>
-            Por favor, preencha as informações de cadastro à esquerda e os dados residenciais à direita. 
+            Por favor, preencha corretamente os dados listados abaixo para realizar o seu cadastro. 
              Todos os campos são de preenchimento obrigatório para a ativação da sua conta.
             <br><br>
             Confira o seu e-mail  para ficar por dentro de todas as nossas atividades.
             <br><br>
             <span class="destaque">Obrigado por fazer parte do nosso Clube de Membros!</span>
             </p>
-
-        <h2>Cadastro do Usuário</h2>
             
         <form id="meuFormulario">
-            <label for="nome">Nome:</label>
-            <input id="nome" type="text" placeholder="Digite seu nome completo" required>
+            <div id="cadastroUsuario">
+                <h2>Cadastro do Usuário</h2>
 
-            <label for="email">Email:</label>
-            <input id="email" type="text" placeholder="Digite um e-mail válido" required>
+                <label for="nome">Nome:</label>
+                <input id="nome" type="text" placeholder="Digite seu nome completo" required>
 
-            <label for="telefone">Telefone:</label>
-            <input id="telefone" type="tel"  maxlength="15" oninput="mascaraTelefone(this)" placeholder="Digite um telefone com DDD" required>
-        </form>
+                <label for="email">Email:</label>
+                <input id="email" type="email" placeholder="Digite um e-mail válido" required>
 
-    <div class="divider"></div>
+                <label for="telefone">Telefone:</label>
+                <input id="telefone" type="tel"  maxlength="15" oninput="mascaraTelefone(this)" placeholder="Digite um telefone com DDD" required>
+            </div> 
 
-        <h2>Cadastro do Endereço</h2>
+        <div class="divider"></div>
 
-        <form>
-            <label for="cep">CEP:</label>
-            <input type="text" id="cep" name="cep" placeholder="Digite apenas os números" required>
+            <div id="cadastroEndereco">
+                <h2>Cadastro do Endereço</h2>
 
-            <label for="logradouro">Logradouro:</label>
-            <input type="text" id="logradouro" name="logradouro" placeholder="Digite o nome da sua rua" required>
+                <label for="cep">CEP:</label>
+                <input type="text" id="cep" name="cep" placeholder="Digite apenas os números" required>
 
-            <label for="bairro">Bairro:</label>
-            <input type="text" id="bairro" name="bairro" placeholder="Digite o nome do seu bairro"required>
+                <label for="logradouro">Logradouro:</label>
+                <input type="text" id="logradouro" name="logradouro" placeholder="Digite o nome da sua rua" required>
 
-            <label for="cidade">Cidade:</label>
-            <input type="text" id="cidade" name="cidade" placeholder="Digite o nome da sua cidade" required>
+                <label for="bairro">Bairro:</label>
+                <input type="text" id="bairro" name="bairro" placeholder="Digite o nome do seu bairro"required>
 
-            <label for="estado">Estado (UF):</label>
-            <input type="text" id="estado" name="estado" placeholder="Digite o Estado(UF) do seu domicílio " required>
+                <label for="cidade">Cidade:</label>
+                <input type="text" id="cidade" name="cidade" placeholder="Digite o nome da sua cidade" required>
 
-            <label for="número">Número:</label>
-            <input type="number" id="numero" name="numero" placeholder="Digite o número do seu domicílio" required>
+                <label for="estado">Estado (UF):</label>
+                <input type="text" id="estado" name="estado" placeholder="Digite o Estado(UF) do seu domicílio " required>
 
-            <label for="complemento">complemento:</label>
-            <input type="text" id="complemento" name="complemento" placeholder="Ex: Ap 302, Bloco B" required>
+                <label for="numero">Número:</label>
+                <input type="number" id="numero" name="numero" placeholder="Digite o número do seu domicílio" required>
 
-            <button type="submit">Cadastrar Usuário</button>
+                <label for="complemento">complemento:</label>
+                <input type="text" id="complemento" name="complemento" placeholder="Ex: Ap 302, Bloco B" required>
+
+                <button type="submit">Cadastrar Usuário</button>
+            </div>    
         </form>
 
         <div id="notificacao-sucesso" class="notificacao-sucesso">

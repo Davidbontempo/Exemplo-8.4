@@ -5,16 +5,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (dadosSalvos) {
         const usuario = JSON.parse(dadosSalvos);
 
-        // O operador '|| ""' evita que apareça a palavra "undefined" nos campos vazios
-        if(document.getElementById("nome")) document.getElementById("nome").value = usuario.nome || "";
-        if(document.getElementById("email")) document.getElementById("email").value = usuario.email || "";
-        if(document.getElementById("telefone")) document.getElementById("telefone").value = usuario.telefone || "";
-        if(document.getElementById("cep")) document.getElementById("cep").value = usuario.cep || "";
-        if(document.getElementById("logradouro")) document.getElementById("logradouro").value = usuario.logradouro || "";
-        if(document.getElementById("bairro")) document.getElementById("bairro").value = usuario.bairro || "";
-        if(document.getElementById("cidade")) document.getElementById("cidade").value = usuario.cidade || "";
-        if(document.getElementById("estado")) document.getElementById("estado").value = usuario.estado || "";
-        if(document.getElementById("numero")) document.getElementById("numero").value = usuario.numero || "";
+        if(document.getElementById("nome"))        document.getElementById("nome").value =        usuario.nome        || "";
+        if(document.getElementById("email"))       document.getElementById("email").value =       usuario.email       || "";
+        if(document.getElementById("telefone"))    document.getElementById("telefone").value =    usuario.telefone    || "";
+        if(document.getElementById("cep"))         document.getElementById("cep").value =         usuario.cep         || "";
+        if(document.getElementById("logradouro"))  document.getElementById("logradouro").value =  usuario.logradouro  || "";
+        if(document.getElementById("bairro"))      document.getElementById("bairro").value =      usuario.bairro      || "";
+        if(document.getElementById("cidade"))      document.getElementById("cidade").value =      usuario.cidade      || "";
+        if(document.getElementById("estado"))      document.getElementById("estado").value =      usuario.estado      || "";
+        if(document.getElementById("numero"))      document.getElementById("numero").value =      usuario.numero      || "";
         if(document.getElementById("complemento")) document.getElementById("complemento").value = usuario.complemento || "";
     }
 });
@@ -28,12 +27,10 @@ function mascaraTelefone(input) {
     }
 
     if (valor.length > 6) {
-        // Formato Celular: (XX) XXXXX-XXXX
-        if (valor.length > 10) {
-            valor = `(${valor.slice(0, 2)}) ${valor.slice(2, 7)}-${valor.slice(7)}`;
+        if (valor.length > 10) { 
+            valor = `(${valor.slice(0, 2)}) ${valor.slice(2, 7)}-${valor.slice(7)}`; // Formato Celular: (XX) XXXXX-XXXX
         } else {
-            // Formato Fixo: (XX) XXXX-XXXX
-            valor = `(${valor.slice(0, 2)}) ${valor.slice(2, 6)}-${valor.slice(6)}`;
+            valor = `(${valor.slice(0, 2)}) ${valor.slice(2, 6)}-${valor.slice(6)}`; // Formato Fixo: (XX) XXXX-XXXX
         }
     } else if (valor.length > 2) {
         valor = `(${valor.slice(0, 2)}) ${valor.slice(2)}`;
@@ -57,11 +54,13 @@ if (campoCep) {
         evento.target.value = valor;
     });
 
+    //aqui eu puxo os dados do CEP através do método fetch no ViaCep
     campoCep.addEventListener("blur", (evento) => {  
         const elemento = evento.target;
         const cepInformado = elemento.value.replace(/\D/g, "");
 
         if (cepInformado.length !== 8) {
+            alert("Por favor, insira um CEP válido com 8 números.");
             return;
         }
 
@@ -91,50 +90,55 @@ function validarEmail(email) {
 const formulario = document.getElementById("meuFormulario");
 const notificacao = document.getElementById("notificacao-sucesso");
 
+//Parte do SUBMIT
 if (formulario) {
     formulario.addEventListener("submit", (evento) => {
         evento.preventDefault();
 
-        // Captura os valores atuais dos inputs
         const nome = document.getElementById("nome").value.trim();
         const email = document.getElementById("email").value.trim();
         const telefone = document.getElementById("telefone").value.trim();
         const cep = document.getElementById("cep").value.trim();
+        const logradouro = document.getElementById("logradouro").value.trim();
+        const bairro = document.getElementById("bairro").value.trim();
+        const cidade = document.getElementById("cidade").value.trim();
+        const estado = document.getElementById("estado").value.trim();
+        const numero = document.getElementById("numero").value.trim();
+        const complemento = document.getElementById("complemento").value.trim();
 
-       // Remove o hífen para validar a quantidade numérica real do CEP
         const cepNumerico = cep.replace(/\D/g, "");
 
-        // Validação simples de campos obrigatórios antes de salvar
-        if (!nome || !email || !telefone || !cep) {
-            alert("Por favor, preencha todos os campos obrigatórios (Nome, E-mail, Telefone e CEP).");
+        if (!nome || !email || !telefone || !cep || !logradouro || !bairro || !cidade || !estado || !numero || !complemento) {
+            alert("Por favor, preencha todos os campos obrigatórios.");
             return;
         }
 
-        // Validação do formato do e-mail
         if (!validarEmail(email)) {
             alert("Por favor, insira um e-mail válido (exemplo@dominio.com).");
             return;
         }
 
+        if (cepNumerico.length !== 8) {
+            alert("Por favor, insira um CEP válido com 8 números.");
+            return;
+        }
+
         // Se passar na validação, monta o objeto do usuário
         const usuario = {
-            nome:        nome,
-            email:       email,
-            telefone:    telefone,
-            cep:         cep,
-            logradouro:  document.getElementById("logradouro") ? document.getElementById("logradouro").value : "",
-            bairro:      document.getElementById("bairro") ? document.getElementById("bairro").value : "",
-            cidade:      document.getElementById("cidade") ? document.getElementById("cidade").value : "",
-            estado:      document.getElementById("estado") ? document.getElementById("estado").value : "",
-            numero:      document.getElementById("numero") ? document.getElementById("numero").value : "",
-            complemento: document.getElementById("complemento") ? document.getElementById("complemento").value : "",
+            nome,
+            email,
+            telefone,
+            cep,
+            logradouro,
+            bairro,
+            cidade,
+            estado,
+            numero,
+            complemento,
         };
 
-        // Grava no LocalStorage
         localStorage.setItem("cadastro", JSON.stringify(usuario));
-        alert("Cadastro realizado e salvo com sucesso!");
         
-        // MODIFICAÇÃO AQUI: Mostra a notificação customizada em vez do alert
         const notificacao = document.getElementById("notificacao-sucesso");
         if (notificacao) {
             notificacao.classList.add("mostrar");
